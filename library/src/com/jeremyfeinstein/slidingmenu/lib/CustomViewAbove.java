@@ -696,8 +696,12 @@ public class CustomViewAbove extends ViewGroup {
 			mLastMotionX = mInitialMotionX = ev.getX();
 			break;
 		case MotionEvent.ACTION_MOVE:
-			if (!mIsBeingDragged) {	
-				determineDrag(ev);
+			if (!mIsBeingDragged) {
+                try {
+				    determineDrag(ev);
+                } catch (Exception ex) {
+                    Log.e(TAG,ex.toString());
+                }
 				if (mIsUnableToDrag)
 					return false;
 			}
